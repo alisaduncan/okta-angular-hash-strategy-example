@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OktaAuthStateService } from '@okta/okta-angular';
 import { filter, map, Observable } from 'rxjs';
 import { AuthState } from '@okta/okta-auth-js';
+import { ActivatedRoute, ActivatedRouteSnapshot, Data } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -13,14 +14,15 @@ import { AuthState } from '@okta/okta-auth-js';
         Welcome, {{name}}
       </span>
     </p>
+    <p>Resolved name: {{resolvedName}}</p>
   </div>
   `,
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
   public name$!: Observable<string>;
-  constructor(private _oktaAuthStateService: OktaAuthStateService) { }
+  public resolvedName!: string;
+  constructor(private _oktaAuthStateService: OktaAuthStateService, private activatedRoute: ActivatedRoute) { }
 
   public ngOnInit(): void {
     this.name$ = this._oktaAuthStateService.authState$.pipe(
@@ -28,5 +30,6 @@ export class ProfileComponent implements OnInit {
       map((authState: AuthState) => authState.idToken?.claims.name ?? '')
     );
 
+    this.resolvedName = this.activatedRoute.snapshot.data['resolvedName'];
   }
 }
