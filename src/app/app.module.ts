@@ -8,17 +8,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const oktaAuth = new OktaAuth({
-  issuer: 'https://{yourOktaDomain}/oauth2/default',
-  clientId: '{yourClientID}',
-  redirectUri: window.location.origin + '/login/callback',
+  issuer: 'https://{yourOktaDomain}.okta.com/oauth2/default',
+  clientId: '{yourClientId}',
+  redirectUri: window.location.origin,
 });
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,9 @@ const oktaAuth = new OktaAuth({
     HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    Location,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

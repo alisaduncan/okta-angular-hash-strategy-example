@@ -1,23 +1,22 @@
-# Angular Quickstart Sample Code for Integrating with Okta using the Redirect Model
+# Angular HashStrategy Sample Code for Integrating with Okta using the Redirect Model
 
-This repository contains a sample of integrating with [Okta](https://www.okta.com/) for authentication using [the redirect model in an Angular app](https://developer.okta.com/docs/guides/sign-into-spa/angular/main/).
+This repository contains a sample of integrating with [Okta](https://www.okta.com/) for authentication using [the redirect model in an Angular app](https://developer.okta.com/docs/guides/sign-into-spa/angular/main/) with hash location strategy enabled.
+
+> **NOTE**
+>
+> This code is not vetted or even tested. It's a quick sample and may contain bugs, errors, security issues, etc. Use it at your own risk.
+> **The author is not responsible for any issues that stem from using this code.**
 
 The sample uses the [Okta Angular SDK](https://github.com/okta/okta-angular) and [Okta Auth JavaScript SDK](https://github.com/okta/okta-auth-js). Read more about getting started with Okta and authentication best practices on the [Okta Developer Portal](https://developer.okta.com).
 
-This code sample demonstrates
-* Configuring Okta
-* Sign-in and sign-out
-* Protecting routes
-* Displaying user profile information from the ID Token
-* Adding an interceptor for adding the Access Token to HTTP calls
 
 ## Getting started
 
 To run this example, run the following commands:
 
 ```shell
-git clone https://github.com/okta-samples/okta-angular-quickstart.git
-cd okta-angular-quickstart
+git clone https://github.com/alisaduncan/okta-angular-hash-strategy-example.git
+cd okta-angular-hash-strategy-example
 npm ci
 ```
 

@@ -34,9 +34,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'okta-angular-quickstart'`, () => {
+  it(`should have as title 'okta-angular-hash-strategy-example'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('okta-angular-quickstart');
+    expect(app.title).toEqual('okta-angular-hash-strategy-example');
   });
 });
